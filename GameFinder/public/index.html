@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameFinder — Play more. Spend less.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="/" class="logo">
+                <span class="logo-icon">G</span>
+                Game<span>Finder</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Accueil</a>
+                <a href="#budget">Budget Finder</a>
+                <a href="#offers" id="free-nav">Jeux gratuits</a>
+                <a href="#discover">Découvrir</a>
+            </div>
+
+            <span class="api-status">
+                Données CheapShark
+            </span>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    <span class="status-dot"></span>
+                    LE GAMING POUR TOUS LES BUDGETS
+                </div>
+
+                <h1>
+                    Play more.<br>
+                    <span>Spend less.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Découvrez les jeux adaptés à votre budget,
+                    comparez les boutiques et trouvez les meilleures offres.
+                </p>
+
+                <form id="search-form">
+
+                    <svg class="search-icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2">
+
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-4-4"></path>
+
+                    </svg>
+
+                    <input
+                        type="search"
+                        id="search"
+                        placeholder="Rechercher un jeu..."
+                        aria-label="Nom du jeu">
+
+                    <button type="submit">
+                        Rechercher →
+                    </button>
+
+                </form>
+
+                <div class="hero-features">
+                    <span>✓ Sans inscription</span>
+                    <span>✓ Plusieurs boutiques</span>
+                    <span>✓ Recherche par budget</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUDGET FINDER -->
+
+        <section class="budget-section container" id="budget">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">BUDGET FINDER</span>
+                    <h2>Quel est votre budget ?</h2>
+
+                    <p class="section-description">
+                        Découvrez les jeux que vous pouvez vous offrir.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="budget-grid">
+
+                <button class="budget-card free-budget" data-budget="0">
+
+                    <span class="budget-category">GRATUIT</span>
+                    <strong>0 $</strong>
+                    <span class="budget-description">
+                        Jouer sans dépenser
+                    </span>
+
+                </button>
+
+                <button class="budget-card" data-budget="5">
+
+                    <span class="budget-category">PETIT BUDGET</span>
+                    <strong>5 $</strong>
+                    <span class="budget-description">
+                        Les offres économiques
+                    </span>
+
+                </button>
+
+                <button class="budget-card" data-budget="10">
+
+                    <span class="budget-category">ESSENTIEL</span>
+                    <strong>10 $</strong>
+                    <span class="budget-description">
+                        Des jeux abordables
+                    </span>
+
+                </button>
+
+                <button class="budget-card active"
+                    data-budget="20">
+
+                    <span class="budget-category">BUDGET INTERMÉDIAIRE</span>
+                    <strong>20 $</strong>
+                    <span class="budget-description">
+                        Encore plus de choix
+                    </span>
+
+                </button>
+
+                <button class="budget-card" data-budget="50">
+
+                    <span class="budget-category">PLUS DE CHOIX</span>
+                    <strong>50 $</strong>
+                    <span class="budget-description">
+                        Explorez davantage
+                    </span>
+
+                </button>
+
+                <button class="budget-card" data-budget="all">
+
+                    <span class="budget-category">EXPLORER</span>
+                    <strong>Tout</strong>
+                    <span class="budget-description">
+                        Sans budget personnalisé
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- DISCOVER -->
+
+        <section class="discover container" id="discover">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">EXPLORER</span>
+                    <h2>À découvrir</h2>
+                </div>
+
+                <span class="muted">Sélection de jeux</span>
+
+            </div>
+
+            <div class="featured-grid">
+
+                <button class="featured-card" data-game="Elden Ring">
+
+                    <img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
+                        alt="Elden Ring"
+                        loading="lazy">
+
+                    <div class="featured-info">
+                        <span>Action RPG</span>
+                        <h3>Elden Ring</h3>
+                        <p>Découvrir les offres →</p>
+                    </div>
+
+                </button>
+
+                <button class="featured-card" data-game="Cyberpunk 2077">
+
+                    <img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+                        alt="Cyberpunk 2077"
+                        loading="lazy">
+
+                    <div class="featured-info">
+                        <span>Open World</span>
+                        <h3>Cyberpunk 2077</h3>
+                        <p>Découvrir les offres →</p>
+                    </div>
+
+                </button>
+
+                <button class="featured-card"
+                    data-game="Red Dead Redemption 2">
+
+                    <img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+                        alt="Red Dead Redemption 2"
+                        loading="lazy">
+
+                    <div class="featured-info">
+                        <span>Aventure</span>
+                        <h3>Red Dead Redemption 2</h3>
+                        <p>Découvrir les offres →</p>
+                    </div>
+
+                </button>
+
+                <button class="featured-card" data-game="Terraria">
+
+                    <img
+                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg"
+                        alt="Terraria"
+                        loading="lazy">
+
+                    <div class="featured-info">
+                        <span>Sandbox</span>
+                        <h3>Terraria</h3>
+                        <p>Découvrir les offres →</p>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- OFFERS -->
+
+        <section class="offers container" id="offers">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">CATALOGUE</span>
+                    <h2 id="results-title">Jeux disponibles</h2>
+                </div>
+
+            </div>
+
+            <div class="offers-layout">
+
+                <aside class="filters">
+
+                    <div class="filter-heading">
+                        <h3>Filtres</h3>
+
+                        <button id="reset-filters">
+                            Réinitialiser
+                        </button>
+                    </div>
+
+                    <div class="filter-group">
+
+                        <h4>Boutique</h4>
+
+                        <select id="store-filter"
+                            aria-label="Choisir une boutique">
+
+                            <option value="all">
+                                Toutes les boutiques
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <h4>Budget maximum</h4>
+
+                        <div class="range-label">
+                            <span>0 $</span>
+                            <span id="price-value">20 $</span>
+                        </div>
+
+                        <input
+                            type="range"
+                            id="price-filter"
+                            min="0"
+                            max="100"
+                            value="20"
+                            aria-label="Budget maximum">
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <h4>Prix</h4>
+
+                        <label class="checkbox-label">
+
+                            <input type="checkbox" id="free-filter">
+
+                            Jeux gratuits uniquement
+
+                        </label>
+
+                    </div>
+
+                    <div class="filter-group">
+
+                        <h4>Promotions</h4>
+
+                        <label class="checkbox-label">
+
+                            <input type="checkbox" id="discount-filter">
+
+                            Offres en réduction
+
+                        </label>
+
+                    </div>
+
+                    <div class="filter-note">
+                        Les prix sont exprimés en dollars américains.
+                        Certaines offres gratuites sont temporaires.
+                    </div>
+
+                </aside>
+
+                <div class="results-content">
+
+                    <div class="results-toolbar">
+
+                        <p id="result-count" aria-live="polite">
+                            Chargement des jeux...
+                        </p>
+
+                        <select id="sort" aria-label="Trier les jeux">
+
+                            <option value="default">Pertinence</option>
+                            <option value="ascending">Prix croissant</option>
+                            <option value="descending">Prix décroissant</option>
+                            <option value="discount">Meilleure réduction</option>
+                            <option value="rating">Mieux évalués</option>
+                            <option value="name">Nom du jeu</option>
+
+                        </select>
+
+                    </div>
+
+                    <div id="results"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-content container">
+
+            <div>
+
+                <a href="/" class="logo">
+                    Game<span>Finder</span>
+                </a>
+
+                <p>Play more. Spend less.</p>
+
+            </div>
+
+            <div class="footer-right">
+                <p>Données fournies par CheapShark.</p>
+                <p>Projet étudiant — 2026</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
