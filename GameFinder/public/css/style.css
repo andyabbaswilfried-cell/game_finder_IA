@@ -1,3 +1,7 @@
+/* =========================
+   VARIABLES
+========================= */
+
 :root {
     --background: #090b10;
     --surface: #11141d;
@@ -5,16 +9,60 @@
     --border: #252a38;
 
     --primary: #8b5cf6;
-    --primary-hover: #7c3aed;
     --primary-light: #c4b5fd;
 
     --text: #f8fafc;
     --muted: #9299aa;
     --green: #4ade80;
 
+    --rating-excellent: #4ade80;
+    --rating-good: #a3e635;
+    --rating-average: #fbbf24;
+    --rating-poor: #f87171;
+
     --radius: 14px;
     --container: 1320px;
 }
+
+
+/* =========================
+   PLATFORM THEMES
+========================= */
+
+body[data-platform="nintendo"] {
+    --primary: #e60012;
+    --primary-light: #fda4af;
+}
+
+body[data-platform="ps5"] {
+    --primary: #0070d1;
+    --primary-light: #93c5fd;
+}
+
+body[data-platform="xbox"] {
+    --primary: #107c10;
+    --primary-light: #86efac;
+}
+
+
+/* =========================
+   LIGHT THEME REVIEW COLORS
+========================= */
+
+body[data-theme="light"],
+body[data-theme="nintendo"] {
+
+    --rating-excellent: #15803d;
+    --rating-good: #4d7c0f;
+    --rating-average: #a16207;
+    --rating-poor: #b91c1c;
+
+}
+
+
+/* =========================
+   RESET
+========================= */
 
 * {
     margin: 0;
@@ -23,15 +71,15 @@
 }
 
 html {
+    color-scheme: dark;
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    color-scheme: dark;
 }
 
 body {
-    font-family: "Inter", Arial, sans-serif;
     background: var(--background);
     color: var(--text);
+    font-family: "Inter", Arial, sans-serif;
     line-height: 1.6;
 }
 
@@ -46,12 +94,12 @@ select {
     cursor: pointer;
 }
 
-button,
-a {
+button {
     color: inherit;
 }
 
 a {
+    color: inherit;
     text-decoration: none;
 }
 
@@ -65,41 +113,41 @@ img {
     margin-inline: auto;
 }
 
-.muted {
-    color: var(--muted);
-    font-size: 13px;
-}
 
-
-/* NAVBAR */
+/* =========================
+   NAVIGATION
+========================= */
 
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(9, 11, 16, 0.9);
+
+    background: rgba(9, 11, 16, 0.94);
     backdrop-filter: blur(20px);
+
     border-bottom: 1px solid var(--border);
 }
 
 .navbar {
-    width: min(92%, var(--container));
-    height: 76px;
-    margin: auto;
+    min-height: 76px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
 }
 
 .logo {
     display: flex;
     align-items: center;
+
     gap: 3px;
-    font-size: 23px;
+
+    font-size: 24px;
     font-weight: 800;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
 }
 
 .logo span {
@@ -107,218 +155,195 @@ img {
 }
 
 .logo .logo-icon {
-    width: 36px;
-    height: 36px;
-    margin-right: 8px;
-
     display: grid;
     place-items: center;
 
+    width: 36px;
+    height: 36px;
+
+    margin-right: 8px;
+
+    border-radius: 10px;
+
     background: var(--primary);
     color: white;
-    border-radius: 10px;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+
+    gap: 20px;
 }
 
-.nav-links a {
-    font-size: 13px;
+.nav-links button {
+    border: none;
+    background: transparent;
+
     color: var(--muted);
+
+    font-size: 13px;
+
     transition: color 0.2s;
 }
 
-.nav-links a:hover {
-    color: white;
+.nav-links button:hover,
+.nav-links button.active {
+    color: var(--primary-light);
 }
 
 #free-nav {
     color: var(--green);
 }
 
-.api-status {
-    font-size: 12px;
-    color: var(--muted);
-}
 
-
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+    padding: 100px 20px 80px;
 
-    padding: 110px 20px 85px;
     text-align: center;
 
-    background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(124, 58, 237, 0.23),
-            transparent 65%
-        );
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,0.035) 1px,
-            transparent 1px
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        color-mix(
+            in srgb,
+            var(--primary) 22%,
+            transparent
         ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.035) 1px,
-            transparent 1px
-        );
-
-    background-size: 50px 50px;
-    mask-image: linear-gradient(black, transparent);
-}
-
-.hero-content {
-    max-width: 900px;
-    margin: auto;
+        transparent 70%
+    );
 }
 
 .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-block;
 
-    padding: 8px 16px;
-    border: 1px solid #493369;
+    border: 1px solid var(--primary);
     border-radius: 50px;
 
-    background: rgba(139,92,246,0.08);
+    padding: 8px 16px;
+
     color: var(--primary-light);
 
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.3px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--primary-light);
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 .hero h1 {
-    font-size: clamp(48px, 8vw, 95px);
-    line-height: 1.05;
+    font-size: clamp(48px, 8vw, 92px);
     font-weight: 900;
+
     letter-spacing: -4px;
-    margin: 30px 0;
+    line-height: 1.05;
+
+    margin: 25px 0;
 }
 
 .hero h1 span {
-    background: linear-gradient(
-        100deg,
-        #a78bfa,
-        #ddd6fe,
-        #818cf8
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--primary-light);
 }
 
-.hero-description {
-    max-width: 570px;
-    margin: auto;
+.hero p {
+    max-width: 600px;
+    margin-inline: auto;
+
     color: var(--muted);
-    font-size: 16px;
 }
 
 #search-form {
-    max-width: 740px;
-    margin: 35px auto 25px;
-
     display: flex;
     align-items: center;
-    gap: 12px;
 
+    gap: 10px;
+
+    max-width: 740px;
+
+    margin: 35px auto 25px;
     padding: 8px;
-    border-radius: 15px;
-    border: 1px solid #353044;
+
     background: var(--surface);
-    transition: 0.2s;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition: border-color 0.2s;
 }
 
 #search-form:focus-within {
     border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(139,92,246,0.1);
-}
-
-.search-icon {
-    flex-shrink: 0;
-    margin-left: 12px;
-    color: var(--muted);
 }
 
 #search {
     flex: 1;
+
     min-width: 0;
-    padding: 14px 0;
 
     background: transparent;
+
     border: none;
     outline: none;
-    color: white;
+
+    color: var(--text);
+
+    padding: 12px;
 }
 
 #search-form button {
     background: var(--primary);
     color: white;
+
     border: none;
-    border-radius: 9px;
-    padding: 15px 24px;
+    border-radius: 8px;
+
+    padding: 14px 22px;
+
     font-weight: 600;
+
+    transition: opacity 0.2s;
 }
 
 #search-form button:hover {
-    background: var(--primary-hover);
+    opacity: 0.85;
 }
 
 .hero-features {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 24px;
+
+    gap: 25px;
 
     color: var(--muted);
+
     font-size: 12px;
 }
 
 
-/* SECTION HEADINGS */
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.section {
+    padding-block: 40px 60px;
+}
 
 .section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 15px;
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
 .eyebrow {
     display: block;
-    margin-bottom: 8px;
 
     color: var(--primary-light);
+
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
+
+    margin-bottom: 8px;
 }
 
 .section-heading h2 {
@@ -326,168 +351,265 @@ img {
     letter-spacing: -1px;
 }
 
-.section-description {
-    margin-top: 8px;
+.section-heading p {
     color: var(--muted);
+
     font-size: 14px;
+
+    margin-top: 6px;
 }
 
 
-/* BUDGET FINDER */
+/* =========================
+   PLATFORM CARDS
+========================= */
 
-.budget-section {
-    padding-block: 40px 65px;
+.platform-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
 }
+
+.platform-card {
+    padding: 26px;
+
+    text-align: left;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: 0.2s;
+}
+
+.pc-card {
+    --platform-color: #8b5cf6;
+}
+
+.nintendo-card {
+    --platform-color: #e60012;
+}
+
+.ps5-card {
+    --platform-color: #0070d1;
+}
+
+.xbox-card {
+    --platform-color: #107c10;
+}
+
+.platform-card:hover,
+.platform-card.active {
+    border-color: var(--platform-color);
+
+    background: color-mix(
+        in srgb,
+        var(--platform-color) 12%,
+        var(--surface)
+    );
+
+    transform: translateY(-3px);
+}
+
+.platform-icon {
+    display: grid;
+    place-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 20px;
+
+    background: var(--platform-color);
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.platform-card h3 {
+    margin-bottom: 8px;
+}
+
+.platform-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   FRANCHISES
+========================= */
+
+.franchise-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.franchise-card {
+    min-height: 110px;
+
+    padding: 18px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+.franchise-card:hover,
+.franchise-card.active {
+    border-color: var(--primary);
+
+    background: var(--surface-hover);
+}
+
+.franchise-card strong {
+    display: block;
+
+    font-size: 15px;
+}
+
+.franchise-card span {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    color: var(--primary-light);
+}
+
+
+/* =========================
+   BUDGET CARDS
+========================= */
 
 .budget-grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
     gap: 14px;
 }
 
 .budget-card {
+    min-height: 140px;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    min-height: 150px;
     padding: 20px;
+
+    background: var(--surface);
 
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--surface);
 
     text-align: left;
+
     transition: 0.2s;
 }
 
-.budget-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary);
-}
-
+.budget-card:hover,
 .budget-card.active {
     border-color: var(--primary);
-    background: rgba(139,92,246,0.12);
 
-    box-shadow:
-        inset 0 0 0 1px var(--primary);
+    background: color-mix(
+        in srgb,
+        var(--primary) 10%,
+        var(--surface)
+    );
 }
 
-.budget-category {
+.budget-card span {
+    color: var(--muted);
+
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
-    color: var(--muted);
 }
 
 .budget-card strong {
-    font-size: 36px;
+    font-size: 35px;
+
     letter-spacing: -2px;
-    margin: 8px 0;
+
+    margin-block: 8px;
 }
 
-.budget-description {
+.budget-card small {
     margin-top: auto;
+
     color: var(--muted);
-    font-size: 12px;
+
+    font-size: 11px;
 }
 
 .free-budget {
-    background: rgba(34,197,94,0.06);
-    border-color: #204c35;
+    border-color: #205436;
 }
 
 .free-budget strong,
-.free-budget .budget-category {
+.free-budget span {
     color: var(--green);
 }
 
 .free-budget:hover,
 .free-budget.active {
     border-color: var(--green);
-    background: rgba(34,197,94,0.12);
-    box-shadow: none;
+
+    background: rgba(34, 197, 94, 0.1);
 }
 
 
-/* FEATURED GAMES */
-
-.discover {
-    padding-block: 30px 70px;
-}
-
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0,1fr));
-    gap: 20px;
-}
-
-.featured-card {
-    overflow: hidden;
-    text-align: left;
-
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    transition: 0.2s;
-}
-
-.featured-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-}
-
-.featured-card img {
-    width: 100%;
-    aspect-ratio: 2.15;
-    object-fit: cover;
-}
-
-.featured-info {
-    padding: 20px;
-}
-
-.featured-info span {
-    color: var(--muted);
-    font-size: 11px;
-    text-transform: uppercase;
-}
-
-.featured-info h3 {
-    font-size: 16px;
-    margin: 8px 0 15px;
-}
-
-.featured-info p {
-    color: var(--primary-light);
-    font-size: 12px;
-}
-
-
-/* OFFERS */
-
-.offers {
-    padding-block: 35px 100px;
-}
+/* =========================
+   OFFERS LAYOUT
+========================= */
 
 .offers-layout {
     display: grid;
-    grid-template-columns: 245px minmax(0,1fr);
-    align-items: start;
+
+    grid-template-columns:
+        250px minmax(0, 1fr);
+
     gap: 25px;
+
+    align-items: start;
 }
 
 
-/* FILTERS */
+/* =========================
+   FILTERS
+========================= */
 
 .filters {
     position: sticky;
+
     top: 100px;
 
     padding: 20px;
+
     background: var(--surface);
+
     border: 1px solid var(--border);
     border-radius: var(--radius);
 }
@@ -496,36 +618,45 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 10px;
-    margin-bottom: 15px;
 }
 
 .filter-heading button {
-    background: transparent;
+    background: none;
+
     border: none;
+
     color: var(--primary-light);
+
     font-size: 11px;
 }
 
 .filter-group {
-    padding: 22px 0;
+    padding: 20px 0;
+
     border-bottom: 1px solid var(--border);
 }
 
-.filter-group h4 {
+.filter-group > label {
+    display: block;
+
+    margin-bottom: 12px;
+
     font-size: 13px;
-    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 select {
     padding: 11px;
 
-    background: var(--background);
-    color: var(--text);
-
-    border: 1px solid var(--border);
     border-radius: 8px;
-    font-size: 13px;
+    border: 1px solid var(--border);
+
+    color: var(--text);
+    background: var(--background);
+
+    font-size: 12px;
 }
 
 .filters select {
@@ -536,13 +667,18 @@ select {
     display: flex;
     justify-content: space-between;
 
-    margin-bottom: 10px;
-    color: var(--muted);
+    gap: 10px;
+
     font-size: 12px;
+
+    color: var(--muted);
+
+    margin-bottom: 12px;
 }
 
 input[type="range"] {
     width: 100%;
+
     accent-color: var(--primary);
 }
 
@@ -550,139 +686,334 @@ input[type="checkbox"] {
     accent-color: var(--primary);
 }
 
-.checkbox-label {
+.filter-group .checkbox-label {
     display: flex;
     align-items: center;
+
     gap: 10px;
 
-    color: var(--muted);
     font-size: 12px;
+
+    color: var(--muted);
+
+    font-weight: 400;
+
+    margin-bottom: 0;
 }
 
 .filter-note {
     margin-top: 20px;
-    padding: 12px;
-    background: rgba(139,92,246,0.07);
-    border-radius: 8px;
+
+    color: var(--muted);
 
     font-size: 11px;
-    color: var(--muted);
 }
 
 
-/* RESULTS */
+/* =========================
+   RESULTS
+========================= */
+
+.results-content {
+    min-width: 0;
+}
 
 .results-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 15px;
+
     margin-bottom: 20px;
 }
 
 #result-count {
-    font-size: 13px;
     color: var(--muted);
+
+    font-size: 13px;
 }
 
 #results {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    align-items: stretch;
+
     gap: 18px;
 }
 
 
-/* GAME CARDS */
+/* =========================
+   GAME CARDS
+========================= */
 
 .game-card {
     display: flex;
     flex-direction: column;
+
+    min-width: 0;
+
+    height: 100%;
+
     overflow: hidden;
 
-    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
 
-    animation: appear 0.3s ease both;
-    transition: 0.2s;
+    background: var(--surface);
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
 
 .game-card:hover {
-    transform: translateY(-4px);
     border-color: var(--primary);
+
+    box-shadow: 0 0 20px color-mix(
+        in srgb,
+        var(--primary) 10%,
+        transparent
+    );
 }
+
+
+/* =========================
+   GAME IMAGES
+========================= */
 
 .game-image-wrapper {
     position: relative;
+
+    width: 100%;
+    height: 180px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
     background: #08090e;
 }
 
 .game-image {
+    display: block;
+
     width: 100%;
-    height: 150px;
-    object-fit: contain;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-placeholder {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 15px;
+
+    text-align: center;
+
+    color: var(--muted);
+    background: var(--surface-hover);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   GAME BADGES
+========================= */
+
+.platform-badge,
+.discount-badge,
+.free-badge {
+    position: absolute;
+
+    top: 10px;
+    z-index: 2;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.platform-badge {
+    left: 10px;
+
+    background: var(--primary);
+
+    color: white;
 }
 
 .discount-badge,
 .free-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    right: 10px;
 
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.discount-badge {
-    color: #bbf7d0;
     background: #166534;
+
+    color: white;
 }
 
 .free-badge {
-    color: #052e16;
     background: var(--green);
+
+    color: #052e16;
 }
 
+
+/* =========================
+   GAME CONTENT
+========================= */
+
 .game-content {
+    padding: 18px;
+
     display: flex;
     flex-direction: column;
+
     flex: 1;
-    padding: 18px;
+
+    min-width: 0;
 }
 
 .store-label {
-    font-size: 11px;
-    color: var(--muted);
+    display: block;
+
+    font-size: 10px;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
+
+    color: var(--muted);
 }
 
 .game-title {
     font-size: 16px;
-    line-height: 1.4;
-    margin: 10px 0 15px;
+    line-height: 1.5;
+
+    margin-block: 10px;
+
+    overflow-wrap: anywhere;
 }
+
+
+/* =========================
+   REVIEW SECTION
+========================= */
+
+.review-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    background: var(--background);
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+}
+
+
+/* POSITIVE REVIEW PERCENTAGE */
 
 .game-rating {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 14px;
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    margin: 0;
 }
+
+
+/* NUMBER OF REVIEWS */
+
+.review-count {
+    font-size: 11px;
+
+    font-weight: 400;
+
+    color: var(--muted);
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* RATING COLORS */
+
+.rating-excellent {
+    color: var(--rating-excellent);
+}
+
+.rating-good {
+    color: var(--rating-good);
+}
+
+.rating-average {
+    color: var(--rating-average);
+}
+
+.rating-poor {
+    color: var(--rating-poor);
+}
+
+.rating-unavailable {
+    color: var(--muted);
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   OFFER COUNT
+========================= */
 
 .offer-count {
-    font-size: 11px;
-    color: var(--primary-light);
-    margin-bottom: 20px;
+    font-size: 12px;
+
+    color: var(--muted);
+
+    margin-bottom: 16px;
 }
 
+
+/* =========================
+   GAME BOTTOM
+========================= */
+
 .game-bottom {
+    display: flex;
+    flex-direction: column;
+
     margin-top: auto;
 }
 
+
+/* =========================
+   PRICES
+========================= */
+
 .price-label {
     font-size: 11px;
+
     color: var(--muted);
 }
 
@@ -690,99 +1021,254 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
     gap: 10px;
+
+    min-height: 42px;
+
     margin-bottom: 15px;
 }
 
 .price {
     color: var(--green);
+
     font-size: 26px;
+
     font-weight: 800;
+
     letter-spacing: -1px;
+
+    white-space: nowrap;
 }
 
 .old-price {
-    color: var(--muted);
-    font-size: 13px;
     text-decoration: line-through;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   ALIGNED GAME BUTTONS
+========================= */
+
+.offer-button,
+.compare-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        opacity 0.2s,
+        background 0.2s,
+        border-color 0.2s;
 }
 
 .offer-button {
-    display: block;
-    text-align: center;
+    background: var(--primary);
 
-    padding: 12px;
-    border: 1px solid #39304e;
-    border-radius: 8px;
+    color: white;
 
-    background: rgba(139,92,246,0.1);
-    color: var(--primary-light);
-
-    font-size: 13px;
-    font-weight: 600;
-
-    transition: 0.2s;
+    border: 1px solid transparent;
 }
 
+.compare-button {
+    margin-top: 8px;
+
+    background: transparent;
+
+    border: 1px solid var(--border);
+
+    color: var(--primary-light);
+}
+
+
+/* Reserve comparison button space */
+
+.game-bottom:not(:has(.compare-button)) {
+    padding-bottom: 52px;
+}
+
+
+/* Reserve main button space */
+
+.game-bottom:not(:has(.offer-button)) .price-container {
+    margin-bottom: 59px;
+}
+
+
 .offer-button:hover {
-    background: var(--primary);
-    color: white;
+    opacity: 0.8;
+}
+
+.compare-button:hover {
+    border-color: var(--primary);
+
+    background: color-mix(
+        in srgb,
+        var(--primary) 8%,
+        transparent
+    );
 }
 
 .free-offer {
-    background: rgba(34,197,94,0.1);
-    color: var(--green);
-    border-color: #245739;
+    background: #166534;
+
+    color: #dcfce7;
 }
 
 .free-offer:hover {
-    background: #166534;
-    color: white;
+    background: #15803d;
 }
 
 
-/* EMPTY STATE */
+/* =========================
+   COMPARISON DIALOG
+========================= */
+
+dialog {
+    position: fixed;
+
+    inset: 0;
+
+    margin: auto;
+
+    padding: 25px;
+
+    width: min(92%, 750px);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+
+    backdrop-filter: blur(4px);
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.dialog-header button {
+    background: transparent;
+
+    border: none;
+
+    font-size: 30px;
+}
+
+.comparison-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.comparison-details {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+.comparison-price {
+    color: var(--green);
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.comparison-row a {
+    color: var(--primary-light);
+
+    font-size: 12px;
+}
+
+.comparison-row a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
 
 .empty-state {
     grid-column: 1 / -1;
-    padding: 85px 20px;
+
+    padding: 70px 20px;
 
     text-align: center;
+
     background: var(--surface);
+
     border: 1px dashed var(--border);
+
     border-radius: var(--radius);
 }
 
-.empty-icon {
-    display: grid;
-    place-items: center;
-
-    width: 65px;
-    height: 65px;
-    margin: 0 auto 20px;
-
-    background: rgba(139,92,246,0.1);
-    border-radius: 18px;
-
-    color: var(--primary-light);
-    font-size: 38px;
-}
-
 .empty-state h3 {
-    margin-bottom: 10px;
     font-size: 18px;
 }
 
 .empty-state p {
+    margin-top: 10px;
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
 
-/* LOADING */
+/* =========================
+   LOADING STATE
+========================= */
 
 .skeleton-card {
-    height: 320px;
+    height: 440px;
+
     border-radius: var(--radius);
 
     background: linear-gradient(
@@ -793,10 +1279,12 @@ input[type="checkbox"] {
     );
 
     background-size: 200% 100%;
+
     animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
+
     from {
         background-position: 200% 0;
     }
@@ -804,22 +1292,13 @@ input[type="checkbox"] {
     to {
         background-position: -200% 0;
     }
-}
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     border-top: 1px solid var(--border);
@@ -829,61 +1308,68 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
+
     padding-block: 40px;
 }
 
 .footer-content p {
-    margin-top: 8px;
-    font-size: 12px;
     color: var(--muted);
+
+    font-size: 12px;
 }
 
-.footer-right {
-    text-align: right;
-}
 
-
-/* ACCESSIBILITY */
+/* =========================
+   ACCESSIBILITY
+========================= */
 
 button:focus-visible,
 a:focus-visible,
-select:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible {
     outline: 2px solid var(--primary-light);
-    outline-offset: 4px;
+
+    outline-offset: 3px;
 }
 
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
 
 @media (max-width: 1150px) {
 
-    .budget-grid {
-        grid-template-columns: repeat(3, minmax(0,1fr));
+    .budget-grid,
+    .franchise-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
     }
 
     #results {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
     }
 
-    .featured-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-    }
-
-    .api-status {
-        display: none;
-    }
 }
+
+
+/* =========================
+   RESPONSIVE - SMALL TABLET
+========================= */
 
 @media (max-width: 800px) {
 
-    .nav-links {
-        gap: 15px;
-    }
+    .platform-grid {
 
-    .nav-links a:not(#free-nav) {
-        display: none;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
     }
 
     .offers-layout {
@@ -894,24 +1380,49 @@ input:focus-visible {
         position: static;
     }
 
+    .navbar {
+        padding-block: 15px;
+
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+
+        gap: 15px;
+    }
+
     .hero {
         padding-block: 80px 60px;
     }
+
 }
+
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
 
 @media (max-width: 500px) {
 
-    .budget-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+    .budget-grid,
+    .franchise-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+    #results {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-card {
+        padding: 18px;
     }
 
     .budget-card {
         padding: 15px;
-    }
-
-    .featured-grid,
-    #results {
-        grid-template-columns: 1fr;
     }
 
     .hero h1 {
@@ -929,13 +1440,24 @@ input:focus-visible {
     .results-toolbar,
     .footer-content {
         flex-direction: column;
+
         align-items: stretch;
     }
 
-    .footer-right {
-        text-align: left;
+    .game-image-wrapper {
+        height: 200px;
     }
+
+    .comparison-row {
+        flex-wrap: wrap;
+    }
+
 }
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -943,7 +1465,10 @@ input:focus-visible {
     *::before,
     *::after {
         animation: none !important;
+
         transition: none !important;
+
         scroll-behavior: auto !important;
     }
+
 }

@@ -1,104 +1,264 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/cards.css">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Comparez les prix des jeux vidéo avec GameFinder.">
 
     <title>GameFinder — Play more. Spend less.</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
+    <!-- CSS -->
+
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/themes.css">
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/ranking.js" defer></script>
+
     <script src="js/script.js" defer></script>
+
+    <script src="js/themes.js" defer></script>
+
 </head>
 
-<body>
+<body data-platform="pc" data-theme="dark">
+
+
+    <!-- HEADER -->
 
     <header class="header">
 
-        <nav class="navbar">
+        <nav class="navbar container">
 
             <a href="/" class="logo">
+
                 <span class="logo-icon">G</span>
+
                 Game<span>Finder</span>
+
             </a>
 
             <div class="nav-links">
-                <a href="#home">Accueil</a>
-                <a href="#budget">Budget Finder</a>
-                <a href="#offers" id="free-nav">Jeux gratuits</a>
-                <a href="#discover">Découvrir</a>
-            </div>
 
-            <span class="api-status">
-                Données CheapShark
-            </span>
+                <button type="button"
+                    data-platform-select="pc">
+                    PC
+                </button>
+
+                <button type="button"
+                    data-platform-select="nintendo">
+                    Nintendo
+                </button>
+
+                <button type="button"
+                    data-platform-select="ps5">
+                    PS5
+                </button>
+
+                <button type="button"
+                    data-platform-select="xbox">
+                    Xbox
+                </button>
+
+                <button type="button" id="free-nav">
+                    Jeux gratuits
+                </button>
+
+            </div>
 
         </nav>
 
     </header>
 
+
     <main>
+
 
         <!-- HERO -->
 
         <section class="hero" id="home">
 
-            <div class="hero-content">
+            <span class="badge">
 
-                <div class="badge">
-                    <span class="status-dot"></span>
-                    LE GAMING POUR TOUS LES BUDGETS
-                </div>
+                LE GAMING POUR TOUS LES BUDGETS
 
-                <h1>
-                    Play more.<br>
-                    <span>Spend less.</span>
-                </h1>
+            </span>
 
-                <p class="hero-description">
-                    Découvrez les jeux adaptés à votre budget,
-                    comparez les boutiques et trouvez les meilleures offres.
+            <h1>
+
+                Play more.<br>
+
+                <span>Spend less.</span>
+
+            </h1>
+
+            <p>
+
+                Découvrez les jeux les mieux évalués,
+                comparez les boutiques et trouvez les
+                meilleures offres adaptées à votre budget.
+
+            </p>
+
+            <form id="search-form">
+
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="Rechercher un jeu..."
+                    aria-label="Nom du jeu"
+                    autocomplete="off">
+
+                <button type="submit">
+
+                    Rechercher →
+
+                </button>
+
+            </form>
+
+            <div class="hero-features">
+
+                <span>✓ Multiplateforme</span>
+
+                <span>✓ Comparaison des prix</span>
+
+                <span>✓ Classement intelligent</span>
+
+                <span>✓ Jeux gratuits</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PLATFORMS -->
+
+        <section class="container section" id="platforms">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">PLATEFORMES</span>
+
+                <h2>Sur quoi jouez-vous ?</h2>
+
+                <p>
+
+                    Choisissez votre plateforme préférée.
+
                 </p>
 
-                <form id="search-form">
+            </div>
 
-                    <svg class="search-icon"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2">
+            <div class="platform-grid">
 
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <path d="m20 20-4-4"></path>
+                <button
+                    type="button"
+                    class="platform-card pc-card active"
+                    data-platform-select="pc">
 
-                    </svg>
+                    <span class="platform-icon">PC</span>
 
-                    <input
-                        type="search"
-                        id="search"
-                        placeholder="Rechercher un jeu..."
-                        aria-label="Nom du jeu">
+                    <h3>PC Gaming</h3>
 
-                    <button type="submit">
-                        Rechercher →
-                    </button>
+                    <p>Steam, GOG et autres boutiques</p>
 
-                </form>
+                </button>
 
-                <div class="hero-features">
-                    <span>✓ Sans inscription</span>
-                    <span>✓ Plusieurs boutiques</span>
-                    <span>✓ Recherche par budget</span>
-                </div>
+
+                <button
+                    type="button"
+                    class="platform-card nintendo-card"
+                    data-platform-select="nintendo">
+
+                    <span class="platform-icon">N</span>
+
+                    <h3>Nintendo</h3>
+
+                    <p>Switch et Switch 2</p>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="platform-card ps5-card"
+                    data-platform-select="ps5">
+
+                    <span class="platform-icon">PS</span>
+
+                    <h3>PlayStation 5</h3>
+
+                    <p>Découvrez les jeux PS5</p>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="platform-card xbox-card"
+                    data-platform-select="xbox">
+
+                    <span class="platform-icon">X</span>
+
+                    <h3>Xbox</h3>
+
+                    <p>Xbox Series X/S</p>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FRANCHISES -->
+
+        <section class="container section" id="franchises">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">LICENCES</span>
+
+                <h2 id="franchise-title">
+
+                    Découvrez vos univers préférés
+
+                </h2>
+
+                <p>
+
+                    Explorez les grandes licences
+                    de votre plateforme.
+
+                </p>
+
+            </div>
+
+            <div
+                id="franchise-grid"
+                class="franchise-grid">
 
             </div>
 
@@ -107,81 +267,105 @@
 
         <!-- BUDGET FINDER -->
 
-        <section class="budget-section container" id="budget">
+        <section class="container section" id="budget">
 
             <div class="section-heading">
 
-                <div>
-                    <span class="eyebrow">BUDGET FINDER</span>
-                    <h2>Quel est votre budget ?</h2>
+                <span class="eyebrow">BUDGET FINDER</span>
 
-                    <p class="section-description">
-                        Découvrez les jeux que vous pouvez vous offrir.
-                    </p>
-                </div>
+                <h2>Quel est votre budget ?</h2>
+
+                <p>
+
+                    Trouvez les jeux les mieux évalués
+                    sans dépasser votre budget.
+
+                </p>
 
             </div>
 
             <div class="budget-grid">
 
-                <button class="budget-card free-budget" data-budget="0">
+                <button
+                    type="button"
+                    class="budget-card free-budget"
+                    data-budget="0">
 
-                    <span class="budget-category">GRATUIT</span>
+                    <span>GRATUIT</span>
+
                     <strong>0 $</strong>
-                    <span class="budget-description">
-                        Jouer sans dépenser
-                    </span>
+
+                    <small>Jouer sans dépenser</small>
 
                 </button>
 
-                <button class="budget-card" data-budget="5">
 
-                    <span class="budget-category">PETIT BUDGET</span>
+                <button
+                    type="button"
+                    class="budget-card"
+                    data-budget="5">
+
+                    <span>PETIT BUDGET</span>
+
                     <strong>5 $</strong>
-                    <span class="budget-description">
-                        Les offres économiques
-                    </span>
+
+                    <small>Offres économiques</small>
 
                 </button>
 
-                <button class="budget-card" data-budget="10">
 
-                    <span class="budget-category">ESSENTIEL</span>
+                <button
+                    type="button"
+                    class="budget-card"
+                    data-budget="10">
+
+                    <span>ESSENTIEL</span>
+
                     <strong>10 $</strong>
-                    <span class="budget-description">
-                        Des jeux abordables
-                    </span>
+
+                    <small>Des jeux abordables</small>
 
                 </button>
 
-                <button class="budget-card active"
+
+                <button
+                    type="button"
+                    class="budget-card active"
                     data-budget="20">
 
-                    <span class="budget-category">BUDGET INTERMÉDIAIRE</span>
+                    <span>INTERMÉDIAIRE</span>
+
                     <strong>20 $</strong>
-                    <span class="budget-description">
-                        Encore plus de choix
-                    </span>
+
+                    <small>Encore plus de choix</small>
 
                 </button>
 
-                <button class="budget-card" data-budget="50">
 
-                    <span class="budget-category">PLUS DE CHOIX</span>
+                <button
+                    type="button"
+                    class="budget-card"
+                    data-budget="50">
+
+                    <span>EXPLORER</span>
+
                     <strong>50 $</strong>
-                    <span class="budget-description">
-                        Explorez davantage
-                    </span>
+
+                    <small>Élargir la recherche</small>
 
                 </button>
 
-                <button class="budget-card" data-budget="all">
 
-                    <span class="budget-category">EXPLORER</span>
+                <button
+                    type="button"
+                    class="budget-card"
+                    data-budget="all">
+
+                    <span>CATALOGUE</span>
+
                     <strong>Tout</strong>
-                    <span class="budget-description">
-                        Sans budget personnalisé
-                    </span>
+
+                    <small>Sans limite personnalisée</small>
 
                 </button>
 
@@ -190,155 +374,162 @@
         </section>
 
 
-        <!-- DISCOVER -->
+        <!-- GAME CATALOGUE -->
 
-        <section class="discover container" id="discover">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="eyebrow">EXPLORER</span>
-                    <h2>À découvrir</h2>
-                </div>
-
-                <span class="muted">Sélection de jeux</span>
-
-            </div>
-
-            <div class="featured-grid">
-
-                <button class="featured-card" data-game="Elden Ring">
-
-                    <img
-                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg"
-                        alt="Elden Ring"
-                        loading="lazy">
-
-                    <div class="featured-info">
-                        <span>Action RPG</span>
-                        <h3>Elden Ring</h3>
-                        <p>Découvrir les offres →</p>
-                    </div>
-
-                </button>
-
-                <button class="featured-card" data-game="Cyberpunk 2077">
-
-                    <img
-                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
-                        alt="Cyberpunk 2077"
-                        loading="lazy">
-
-                    <div class="featured-info">
-                        <span>Open World</span>
-                        <h3>Cyberpunk 2077</h3>
-                        <p>Découvrir les offres →</p>
-                    </div>
-
-                </button>
-
-                <button class="featured-card"
-                    data-game="Red Dead Redemption 2">
-
-                    <img
-                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
-                        alt="Red Dead Redemption 2"
-                        loading="lazy">
-
-                    <div class="featured-info">
-                        <span>Aventure</span>
-                        <h3>Red Dead Redemption 2</h3>
-                        <p>Découvrir les offres →</p>
-                    </div>
-
-                </button>
-
-                <button class="featured-card" data-game="Terraria">
-
-                    <img
-                        src="https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg"
-                        alt="Terraria"
-                        loading="lazy">
-
-                    <div class="featured-info">
-                        <span>Sandbox</span>
-                        <h3>Terraria</h3>
-                        <p>Découvrir les offres →</p>
-                    </div>
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- OFFERS -->
-
-        <section class="offers container" id="offers">
+        <section class="container section" id="offers">
 
             <div class="section-heading">
 
-                <div>
-                    <span class="eyebrow">CATALOGUE</span>
-                    <h2 id="results-title">Jeux disponibles</h2>
-                </div>
+                <span class="eyebrow">CATALOGUE</span>
+
+                <h2 id="results-title">
+
+                    Jeux PC
+
+                </h2>
 
             </div>
 
             <div class="offers-layout">
 
+
+                <!-- FILTERS -->
+
                 <aside class="filters">
 
                     <div class="filter-heading">
+
                         <h3>Filtres</h3>
 
-                        <button id="reset-filters">
+                        <button
+                            type="button"
+                            id="reset-filters">
+
                             Réinitialiser
+
                         </button>
+
                     </div>
+
+
+                    <!-- PLATFORM -->
 
                     <div class="filter-group">
 
-                        <h4>Boutique</h4>
+                        <label for="platform-filter">
 
-                        <select id="store-filter"
-                            aria-label="Choisir une boutique">
+                            Plateforme
 
-                            <option value="all">
-                                Toutes les boutiques
+                        </label>
+
+                        <select id="platform-filter">
+
+                            <option value="pc">
+                                PC
+                            </option>
+
+                            <option value="nintendo">
+                                Nintendo
+                            </option>
+
+                            <option value="ps5">
+                                PlayStation 5
+                            </option>
+
+                            <option value="xbox">
+                                Xbox Series X/S
                             </option>
 
                         </select>
 
                     </div>
 
+
+                    <!-- FRANCHISE -->
+
                     <div class="filter-group">
 
-                        <h4>Budget maximum</h4>
+                        <label for="franchise-filter">
+
+                            Licence
+
+                        </label>
+
+                        <select id="franchise-filter">
+
+                            <option value="">
+
+                                Toutes les licences
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- STORE -->
+
+                    <div class="filter-group">
+
+                        <label for="store-filter">
+
+                            Boutique
+
+                        </label>
+
+                        <select id="store-filter">
+
+                            <option value="all">
+
+                                Toutes les boutiques
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BUDGET -->
+
+                    <div class="filter-group">
+
+                        <label for="price-filter">
+
+                            Budget maximum
+
+                        </label>
 
                         <div class="range-label">
+
                             <span>0 $</span>
-                            <span id="price-value">20 $</span>
+
+                            <span id="price-value">
+                                20 $
+                            </span>
+
                         </div>
 
                         <input
                             type="range"
                             id="price-filter"
                             min="0"
-                            max="100"
-                            value="20"
-                            aria-label="Budget maximum">
+                            max="150"
+                            value="20">
 
                     </div>
 
-                    <div class="filter-group">
 
-                        <h4>Prix</h4>
+                    <!-- FREE GAMES -->
+
+                    <div class="filter-group">
 
                         <label class="checkbox-label">
 
-                            <input type="checkbox" id="free-filter">
+                            <input
+                                type="checkbox"
+                                id="free-filter">
 
                             Jeux gratuits uniquement
 
@@ -346,43 +537,110 @@
 
                     </div>
 
-                    <div class="filter-group">
 
-                        <h4>Promotions</h4>
+                    <!-- DISCOUNTS -->
+
+                    <div class="filter-group">
 
                         <label class="checkbox-label">
 
-                            <input type="checkbox" id="discount-filter">
+                            <input
+                                type="checkbox"
+                                id="discount-filter">
 
-                            Offres en réduction
+                            Promotions uniquement
 
                         </label>
 
                     </div>
 
-                    <div class="filter-note">
-                        Les prix sont exprimés en dollars américains.
-                        Certaines offres gratuites sont temporaires.
-                    </div>
+
+                    <p class="filter-note">
+
+                        Les prix sont exprimés en dollars
+                        américains. Vérifiez le prix final
+                        et la disponibilité auprès
+                        de la boutique.
+
+                    </p>
 
                 </aside>
+
+
+                <!-- RESULTS -->
 
                 <div class="results-content">
 
                     <div class="results-toolbar">
 
-                        <p id="result-count" aria-live="polite">
+                        <p
+                            id="result-count"
+                            aria-live="polite">
+
                             Chargement des jeux...
+
                         </p>
 
-                        <select id="sort" aria-label="Trier les jeux">
 
-                            <option value="default">Pertinence</option>
-                            <option value="ascending">Prix croissant</option>
-                            <option value="descending">Prix décroissant</option>
-                            <option value="discount">Meilleure réduction</option>
-                            <option value="rating">Mieux évalués</option>
-                            <option value="name">Nom du jeu</option>
+                        <!-- NEW RANKING OPTIONS -->
+
+                        <select
+                            id="sort"
+                            aria-label="Trier les jeux">
+
+                            <option value="default">
+
+                                Classement intelligent
+
+                            </option>
+
+                            <option value="budget">
+
+                                Proximité du budget
+
+                            </option>
+
+                            <option value="positivity">
+
+                                Avis les plus positifs
+
+                            </option>
+
+                            <option value="popularity">
+
+                                Les plus populaires
+
+                            </option>
+
+                            <option value="ascending">
+
+                                Prix croissant
+
+                            </option>
+
+                            <option value="descending">
+
+                                Prix décroissant
+
+                            </option>
+
+                            <option value="discount">
+
+                                Meilleure réduction
+
+                            </option>
+
+                            <option value="relevance">
+
+                                Pertinence API
+
+                            </option>
+
+                            <option value="name">
+
+                                Nom du jeu
+
+                            </option>
 
                         </select>
 
@@ -398,23 +656,65 @@
 
     </main>
 
+
+    <!-- COMPARISON DIALOG -->
+
+    <dialog
+        id="comparison-dialog"
+        aria-labelledby="comparison-title">
+
+        <div class="dialog-header">
+
+            <h2 id="comparison-title">
+
+                Comparer les offres
+
+            </h2>
+
+            <button
+                type="button"
+                id="close-dialog"
+                aria-label="Fermer">
+
+                ×
+
+            </button>
+
+        </div>
+
+        <div id="comparison-results"></div>
+
+    </dialog>
+
+
+    <!-- FOOTER -->
+
     <footer>
 
-        <div class="footer-content container">
+        <div class="container footer-content">
 
             <div>
 
                 <a href="/" class="logo">
+
                     Game<span>Finder</span>
+
                 </a>
 
                 <p>Play more. Spend less.</p>
 
             </div>
 
-            <div class="footer-right">
-                <p>Données fournies par CheapShark.</p>
-                <p>Projet étudiant — 2026</p>
+            <div>
+
+                <p>
+
+                    Données fournies par CheapShark et NEXARDA.
+
+                </p>
+
+                <p>GameFinder — Projet étudiant 2026</p>
+
             </div>
 
         </div>

@@ -1,0 +1,547 @@
+/* =========================
+   DARK MODE
+========================= */
+
+body[data-theme="dark"] {
+    color-scheme: dark;
+
+    --background: #090b10;
+    --surface: #11141d;
+    --surface-hover: #191d29;
+    --border: #252a38;
+
+    --primary: #8b5cf6;
+    --primary-light: #c4b5fd;
+
+    --text: #f8fafc;
+    --muted: #9299aa;
+    --green: #4ade80;
+
+    --header-background: rgba(9, 11, 16, 0.94);
+    --image-background: #08090e;
+
+    --skeleton-base: #151822;
+    --skeleton-highlight: #232735;
+
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body[data-theme="light"] {
+    color-scheme: light;
+
+    --background: #f4f5f9;
+    --surface: #ffffff;
+    --surface-hover: #ede9fe;
+    --border: #e0e2eb;
+
+    --primary: #7c3aed;
+    --primary-light: #6d28d9;
+
+    --text: #18181b;
+    --muted: #64748b;
+    --green: #15803d;
+
+    --header-background: rgba(255, 255, 255, 0.95);
+    --image-background: #e8eaf0;
+
+    --skeleton-base: #e5e7eb;
+    --skeleton-highlight: #f8fafc;
+
+    --shadow: rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================
+   NINTENDO MODE
+========================= */
+
+body[data-theme="nintendo"] {
+    color-scheme: light;
+
+    --background: #fff3f3;
+    --surface: #ffffff;
+    --surface-hover: #ffe4e6;
+    --border: #f1c8cc;
+
+    --primary: #e60012;
+    --primary-light: #b6000e;
+
+    --text: #242124;
+    --muted: #75676b;
+    --green: #15803d;
+
+    --header-background: #e60012;
+    --image-background: #ffe5e7;
+
+    --skeleton-base: #f5d9dc;
+    --skeleton-highlight: #fff4f5;
+
+    --shadow: rgba(230, 0, 18, 0.08);
+}
+
+
+/* =========================
+   PLAYSTATION MODE
+========================= */
+
+body[data-theme="ps5"] {
+    color-scheme: dark;
+
+    --background: #050d20;
+    --surface: #0d1932;
+    --surface-hover: #142747;
+    --border: #20385c;
+
+    --primary: #0070d1;
+    --primary-light: #7ec8ff;
+
+    --text: #f1f5ff;
+    --muted: #91a7c7;
+    --green: #4ade80;
+
+    --header-background: rgba(5, 13, 32, 0.95);
+    --image-background: #030a19;
+
+    --skeleton-base: #11213c;
+    --skeleton-highlight: #203d64;
+
+    --shadow: rgba(0, 112, 209, 0.12);
+}
+
+
+/* =========================
+   XBOX MODE
+========================= */
+
+body[data-theme="xbox"] {
+    color-scheme: dark;
+
+    --background: #080f09;
+    --surface: #111d13;
+    --surface-hover: #1c3020;
+    --border: #29452c;
+
+    --primary: #107c10;
+    --primary-light: #86efac;
+
+    --text: #f0fff2;
+    --muted: #9caf9e;
+    --green: #65e765;
+
+    --header-background: rgba(8, 15, 9, 0.95);
+    --image-background: #060c07;
+
+    --skeleton-base: #142518;
+    --skeleton-highlight: #29452c;
+
+    --shadow: rgba(16, 124, 16, 0.15);
+}
+
+
+/* =========================
+   GLOBAL THEME APPLICATION
+========================= */
+
+body {
+    transition:
+        background-color 0.25s,
+        color 0.25s;
+}
+
+.header {
+    background: var(--header-background);
+}
+
+#search {
+    color: var(--text);
+}
+
+.game-image-wrapper {
+    background: var(--image-background);
+}
+
+.game-card,
+.filters,
+.platform-card,
+.budget-card,
+.franchise-card {
+    box-shadow: 0 5px 20px var(--shadow);
+
+    transition:
+        background-color 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
+}
+
+.game-card:hover {
+    box-shadow: 0 8px 30px var(--shadow);
+}
+
+.skeleton-card {
+    background: linear-gradient(
+        90deg,
+        var(--skeleton-base) 25%,
+        var(--skeleton-highlight) 50%,
+        var(--skeleton-base) 75%
+    );
+
+    background-size: 200% 100%;
+}
+
+
+/* =========================
+   LIGHT MODE DETAILS
+========================= */
+
+body[data-theme="light"] .hero {
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        #ddd6fe,
+        transparent 75%
+    );
+}
+
+body[data-theme="light"] .offer-button {
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+body[data-theme="light"] .free-badge,
+body[data-theme="nintendo"] .free-badge {
+    background: #dcfce7;
+    color: #166534;
+}
+
+
+/* =========================
+   NINTENDO MODE DETAILS
+========================= */
+
+body[data-theme="nintendo"] .header .logo,
+body[data-theme="nintendo"] .header .logo span,
+body[data-theme="nintendo"] .nav-links button {
+    color: white;
+}
+
+body[data-theme="nintendo"] .logo .logo-icon {
+    background: white;
+    color: #e60012;
+}
+
+body[data-theme="nintendo"] .nav-links button.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+body[data-theme="nintendo"] .hero {
+    background: linear-gradient(
+        135deg,
+        #ffe4e6,
+        #ffffff,
+        #fff1f2
+    );
+}
+
+body[data-theme="nintendo"] .game-card {
+    border-radius: 20px;
+}
+
+body[data-theme="nintendo"] .offer-button {
+    border-radius: 12px;
+}
+
+body[data-theme="nintendo"] .badge {
+    background: #ffffff;
+}
+
+
+/* =========================
+   PLAYSTATION MODE DETAILS
+========================= */
+
+body[data-theme="ps5"] .hero {
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        #164c91,
+        #08142b 55%,
+        transparent 80%
+    );
+}
+
+body[data-theme="ps5"] .hero h1 span {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #60a5fa,
+        #38bdf8
+    );
+
+    background-clip: text;
+    color: transparent;
+}
+
+body[data-theme="ps5"] .offer-button {
+    background: linear-gradient(
+        90deg,
+        #0057b8,
+        #0070d1
+    );
+}
+
+body[data-theme="ps5"] .game-card:hover {
+    box-shadow: 0 0 22px rgba(0, 112, 209, 0.25);
+}
+
+
+/* =========================
+   XBOX MODE DETAILS
+========================= */
+
+body[data-theme="xbox"] .hero {
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        #194f20,
+        #0a190d 50%,
+        transparent 80%
+    );
+}
+
+body[data-theme="xbox"] .hero h1 span {
+    background: linear-gradient(
+        90deg,
+        #bbf7d0,
+        #4ade80,
+        #16a34a
+    );
+
+    background-clip: text;
+    color: transparent;
+}
+
+body[data-theme="xbox"] .game-card:hover {
+    box-shadow: 0 0 22px rgba(16, 124, 16, 0.3);
+}
+
+
+/* =========================
+   THEME SELECTOR
+========================= */
+
+.theme-switcher {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 1000;
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 52px;
+    height: 52px;
+
+    background: var(--primary);
+    color: white;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    box-shadow: 0 6px 25px var(--shadow);
+
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* =========================
+   THEME MENU
+========================= */
+
+.theme-menu {
+    position: absolute;
+
+    right: 0;
+    bottom: 65px;
+
+    width: 250px;
+
+    padding: 18px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    box-shadow: 0 12px 40px var(--shadow);
+}
+
+.theme-menu[hidden] {
+    display: none;
+}
+
+.theme-menu h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.theme-menu-description {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 15px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 7px;
+
+    background: var(--background);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    text-align: left;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.theme-option:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+}
+
+.theme-option.active {
+    border-color: var(--primary);
+}
+
+.theme-option.active::after {
+    content: "✓";
+
+    margin-left: auto;
+
+    color: var(--primary-light);
+}
+
+
+/* =========================
+   THEME COLOR PREVIEWS
+========================= */
+
+.theme-preview {
+    display: block;
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #9299aa;
+    border-radius: 8px;
+}
+
+.preview-dark {
+    background: linear-gradient(
+        135deg,
+        #090b10 50%,
+        #8b5cf6 50%
+    );
+}
+
+.preview-light {
+    background: linear-gradient(
+        135deg,
+        #ffffff 50%,
+        #8b5cf6 50%
+    );
+}
+
+.preview-nintendo {
+    background: linear-gradient(
+        135deg,
+        #ffffff 50%,
+        #e60012 50%
+    );
+}
+
+.preview-ps5 {
+    background: linear-gradient(
+        135deg,
+        #050d20 50%,
+        #0070d1 50%
+    );
+}
+
+.preview-xbox {
+    background: linear-gradient(
+        135deg,
+        #080f09 50%,
+        #107c10 50%
+    );
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .theme-switcher {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .theme-toggle {
+        width: 46px;
+        height: 46px;
+    }
+
+    .theme-menu {
+        width: 230px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    body,
+    .theme-option,
+    .theme-toggle {
+        transition: none;
+    }
+
+}
